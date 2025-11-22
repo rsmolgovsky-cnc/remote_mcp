@@ -6,8 +6,6 @@ import logging
 from typing import List
 from mcp.server.fastmcp import FastMCP
 
-# Initialize FastMCP server
-mcp = FastMCP("research-server", port=8001)
 # Set up logging to file instead of stdout/stderr (which interferes with MCP protocol)
 log_file = "/tmp/mcp_research_server.log"
 try:
@@ -41,7 +39,9 @@ logger = logging.getLogger(__name__)
 
 PAPER_DIR = "../papers"
 
-mcp = FastMCP("research-server")
+# Get port from environment variable (Render provides this)
+port = int(os.environ.get('PORT', 8000))
+mcp = FastMCP("research-server", port=port)
 
 @mcp.tool()
 def search_papers(topic: str, max_results: int = 5) -> List[str]:
