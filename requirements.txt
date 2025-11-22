@@ -1,0 +1,5 @@
+anthropic==0.73.0
+arxiv==2.3.1
+boto3==1.40.74
+mcp==1.21.2
+python-dotenv==1.2.1
